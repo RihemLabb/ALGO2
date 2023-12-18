@@ -1,0 +1,39 @@
+ALGORITHM DotProductFunction
+
+FUNCTION dot_product(v1, v2) :
+VAR
+    n := Length(v1)
+    ps := 0
+
+    FOR i FROM 0 TO n - 1 DO
+        ps := ps + v1[i] * v2[i]
+    END_FOR
+
+    RETURN ps
+END
+
+ALGORITHM OrthogonalityFunction
+
+FUNCTION AreVectorsOrthogonal(v1, v2) :
+VAR
+    ps := dot_product(v1, v2)
+    RETURN (ps = 0)
+END
+
+ALGORITHM OrthogonalityForPairsProcedure
+
+PROCEDURE OrthogonalityForPairs(VAR orthogonalStatus, n, vSet1, vSet2) :
+VAR
+    i, j, ps := 0
+    
+    FOR i FROM 0 TO n - 1 DO
+        FOR j FROM 0 TO Length(vectorsSet1[i]) - 1 DO
+            ps := ps + vSet1[i][j] * vSet2[i][j]
+        END_FOR
+        orthogonalStatus[i] := (ps = 0)
+        ps := 0 
+    END_FOR
+
+    // Process orthogonalStatus array as needed
+    
+END
