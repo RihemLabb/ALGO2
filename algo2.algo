@@ -1,0 +1,28 @@
+ALGORITHM Algo2
+
+FUNCTION CalculateDistinctSum(VAR set1, set2) :
+VAR
+    sum := 0
+    elements := Array[BOOLEAN]
+    maxSize := Max(Max(Length(set1), Length(set2)), 1)
+    
+    FOR i FROM 0 TO maxSize - 1 DO 
+        elements[i] := False
+    END_FOR
+    
+    FOR i FROM 0 TO Length(set1) - 1 DO 
+        IF NOT elements[set1[i]] THEN
+            elements[set1[i]] := True
+            sum := sum + set1[i]
+        END_IF
+    END_FOR
+    
+    FOR i FROM 0 TO Length(set2) - 1 DO 
+        IF NOT elements[set2[i]] THEN
+            elements[set2[i]] := True
+            sum := sum + set2[i]
+        END_IF
+    END_FOR
+    
+    RETURN sum ;
+END
